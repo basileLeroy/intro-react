@@ -49,7 +49,6 @@ function App() {
       // uuidv4 is a id library that generates id's
         return [ ...previousTodos, {id: uuidv4(), name: name, complete: false}]
     })
-    console.log(name);
 
     // Returning the unput box to empty after submit
     todoName.current.value = null;
