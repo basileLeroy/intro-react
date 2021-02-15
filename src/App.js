@@ -55,6 +55,14 @@ function App() {
     todoName.current.value = null;
   }
 
+  function handleClearList () {
+    // Making a new list with only the todos that are not marked as complete
+    const newTodos = todos.filter(todo => !todo.complete)
+
+    //replacing that list with the old one
+    setTodos(newTodos)
+  }
+
   return (
     <>
       <div className="addTodo">
@@ -62,13 +70,13 @@ function App() {
           
           {/* Adding an eventListner to the button */}
           <button onClick={addToList}>Add</button>
-          <button>Clear Completed todo's</button>
+          <button onClick={handleClearList}>Clear Completed todo's</button>
       </div>
 
       <TodoList todos={todos} toggleTodo={toggleTodo}/>
 
       <div className="left-to-do">
-          <p>0 left!</p>
+          <p>{todos.filter(todo => !todo.complete).length} left!</p>
       </div>
     </>
   )
