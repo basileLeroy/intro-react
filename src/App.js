@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 const LOCAL_STORAGE_KEY = 'todoApp.todos';
 
 function App() {
+
+  // Destructing the array with all the todos. and replacing them with newTodos created by setTodos
   const [todos, setTodos] = useState([]);
 
   // useRef() is a build in function to call inputs fields with the attribute "ref"
