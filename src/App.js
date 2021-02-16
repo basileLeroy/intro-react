@@ -3,7 +3,6 @@ import TodoList from './TodoList';
 import { v4 as uuidv4 } from 'uuid';
 
 
-
 const LOCAL_STORAGE_KEY = 'todoApp.todos';
 
 function App() {
