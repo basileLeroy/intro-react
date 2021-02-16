@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import TodoList from './TodoList';
 import { v4 as uuidv4 } from 'uuid';
 
+
+
 const LOCAL_STORAGE_KEY = 'todoApp.todos';
 
 function App() {
@@ -66,18 +68,22 @@ function App() {
 
   return (
     <>
-      <div className="addTodo">
-          <input ref={todoName} type="text"/>
-          
-          {/* Adding an eventListner to the button */}
-          <button onClick={addToList}>Add</button>
-          <button onClick={handleClearList}>Clear Completed todo's</button>
-      </div>
+      <div className="position-absolute top-50 start-50 translate-middle container-sm p-3 mb-2 bg-info text-dark rounded">
+        <h1>My TODO list</h1>
+        <div className="input-group mb-3">
+            <span className="input-group-text" id="inputGroup-sizing-default">Add to list</span>
+            <input ref={todoName} type="text" placeholder="New Todo ..."/>
+            
+            {/* Adding an eventListner to the button */}
+            <button className="btn btn-primary" onClick={addToList}>Add</button>
+            <button className="btn btn-warning" onClick={handleClearList}>Clear Completed todo's</button>
+        </div>
 
-      <TodoList todos={todos} toggleTodo={toggleTodo}/>
-
-      <div className="left-to-do">
-          <p>{todos.filter(todo => !todo.complete).length} left!</p>
+        <TodoList todos={todos} toggleTodo={toggleTodo}/>
+        <br/><br/>
+        <div className="left-to-do">
+            <p>{todos.filter(todo => !todo.complete).length} left!</p>
+        </div>
       </div>
     </>
   )
