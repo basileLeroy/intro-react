@@ -9,11 +9,11 @@ export default function Todo({ todo, toggleTodo }) {
 
     return (
         <div class="card-body">
-            <laber class="todo">
+            <label class="todo">
                 {/* Instead of using the toggleTodo function, we use an inbetween function to get the id of the checkbox */}
                 <input type="checkbox" checked={todo.complete} onChange={handleTodoClick}/>
                 {todo.name}
-            </laber>
+            </label>
         </div>
     )
 }
