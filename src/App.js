@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TodoList from './TodoList';
+import Nav from './Nav';
+import Calendar from './Calendar';
 import { v4 as uuidv4 } from 'uuid';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos';
@@ -12,6 +15,7 @@ function App() {
 
   // useRef() is a build in function to call inputs fields with the attribute "ref"
   const todoName = useRef();
+  const todoDate = useRef();
 
   useEffect(() => {
     // Can't read strings, need to parse with JSON
@@ -43,7 +47,7 @@ function App() {
 
   function addToList(e) {
     const name = todoName.current.value
-    const date = new Date()
+    const date = todoDate.current.value
 
     if (name === '') {
         return
@@ -51,7 +55,7 @@ function App() {
 
     setTodos(previousTodos => {
       // uuidv4 is a id library that generates id's
-        return [ ...previousTodos, {id: uuidv4(), name: name, complete: false, date: date.toLocaleDateString()}]
+        return [ ...previousTodos, {id: uuidv4(), name: name, complete: false, date: date}]
     })
 
     // Returning the unput box to empty after submit
@@ -68,22 +72,30 @@ function App() {
 
   return (
     <>
+      <Nav />
       <div className="position-absolute top-50 start-50 translate-middle container-sm p-3 mb-2 bg-info text-dark rounded">
-        <h1>My TODO list</h1>
-        <div className="input-group mb-3">
-            <span className="input-group-text" id="inputGroup-sizing-default">Add to list</span>
-            <input ref={todoName} type="text" placeholder="New Todo ..."/>
-            
-            {/* Adding an eventListner to the button */}
-            <button className="btn btn-primary" onClick={addToList}>Add</button>
-            <button className="btn btn-warning" onClick={handleClearList}>Clear Completed todo's</button>
-        </div>
+        <Router>
+            <Route path="/calendar" component={Calendar}/>
 
-        <TodoList todos={todos} toggleTodo={toggleTodo}/>
-        <br/><br/>
-        <div className="left-to-do">
-            <p>{todos.filter(todo => !todo.complete).length} left!</p>
-        </div>
+            <h1>My TODO list</h1>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-default">Add to list</span>
+                <input ref={todoName} type="text" placeholder="New Todo ..."/>
+                <input ref={todoDate} type="date" id="start" name="trip-start"
+                    min="2021-01-01" max="2070-12-31">
+                </input>
+                
+                {/* Adding an eventListner to the button */}
+                <button className="btn btn-primary" onClick={addToList}>Add</button>
+                <button className="btn btn-warning" onClick={handleClearList}>Clear Completed todo's</button>
+            </div>
+
+            <TodoList todos={todos} toggleTodo={toggleTodo}/>
+            <br/><br/>
+            <div className="left-to-do">
+                <p>{todos.filter(todo => !todo.complete).length} left!</p>
+            </div>
+        </Router>
       </div>
     </>
   )
