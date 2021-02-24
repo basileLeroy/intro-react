@@ -43,6 +43,7 @@ function App() {
 
   function addToList(e) {
     const name = todoName.current.value
+    const date = new Date()
 
     if (name === '') {
         return
@@ -50,7 +51,7 @@ function App() {
 
     setTodos(previousTodos => {
       // uuidv4 is a id library that generates id's
-        return [ ...previousTodos, {id: uuidv4(), name: name, complete: false}]
+        return [ ...previousTodos, {id: uuidv4(), name: name, complete: false, date: date.toLocaleDateString()}]
     })
 
     // Returning the unput box to empty after submit
