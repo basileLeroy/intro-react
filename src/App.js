@@ -10,6 +10,23 @@ const LOCAL_STORAGE_KEY = 'todoApp.todos';
 
 function App() {
 
+  return (
+    <>
+      <Nav />
+      <div className="position-absolute top-50 start-50 translate-middle container-sm p-3 mb-2 bg-info text-dark rounded">
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/calendar" exact component={Calendar}/>
+          </Switch>
+        </Router>
+      </div>
+    </>
+  )
+}
+
+function Home() {
+
   // Destructing the array with all the todos. and replacing them with newTodos created by setTodos
   const [todos, setTodos] = useState([]);
 
@@ -72,30 +89,23 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <div className="position-absolute top-50 start-50 translate-middle container-sm p-3 mb-2 bg-info text-dark rounded">
-        <Router>
-            <Route path="/calendar" component={Calendar}/>
+      <h1>My TODO list</h1>
+      <div className="input-group mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-default">Add to list</span>
+          <input ref={todoName} type="text" placeholder="New Todo ..."/>
+          <input ref={todoDate} type="date" id="start" name="trip-start"
+              min="2021-01-01" max="2070-12-31">
+          </input>
+          
+          {/* Adding an eventListner to the button */}
+          <button className="btn btn-primary" onClick={addToList}>Add</button>
+          <button className="btn btn-warning" onClick={handleClearList}>Clear Completed todo's</button>
+      </div>
 
-            <h1>My TODO list</h1>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="inputGroup-sizing-default">Add to list</span>
-                <input ref={todoName} type="text" placeholder="New Todo ..."/>
-                <input ref={todoDate} type="date" id="start" name="trip-start"
-                    min="2021-01-01" max="2070-12-31">
-                </input>
-                
-                {/* Adding an eventListner to the button */}
-                <button className="btn btn-primary" onClick={addToList}>Add</button>
-                <button className="btn btn-warning" onClick={handleClearList}>Clear Completed todo's</button>
-            </div>
-
-            <TodoList todos={todos} toggleTodo={toggleTodo}/>
-            <br/><br/>
-            <div className="left-to-do">
-                <p>{todos.filter(todo => !todo.complete).length} left!</p>
-            </div>
-        </Router>
+      <TodoList todos={todos} toggleTodo={toggleTodo}/>
+      <br/><br/>
+      <div className="left-to-do">
+          <p>{todos.filter(todo => !todo.complete).length} left!</p>
       </div>
     </>
   )
