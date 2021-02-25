@@ -27,14 +27,15 @@ const CalendarPage = () => {
     const calendarResults = calendarItems.map((calendarItem) => {
 
         console.log(calendarItem)
+        // Foreach here?
         return {
             eventName: calendarItem.name,
-            startDate: new Date(calendarItem.startDate),
-            stopDate: new Date(calendarItem.stopDate),
+            startDate: calendarItem.startDate,
+            stopDate: calendarItem.stopDate,
         }
         
     })
-    console.log(calendarResults)
+    
 
     // To obtain the eventName out of calendarResults, I need to select the [array]
     // TODO: Find a way to be able to correctly select the calendarResults!
@@ -48,7 +49,6 @@ const CalendarPage = () => {
             }
         ]
     }
-
 
     return (
         <div className="App">
