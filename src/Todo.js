@@ -12,7 +12,7 @@ export default function Todo({ todo, toggleTodo }) {
             <label className="card-body p-3 mb-2 bg-primary text-white">
                 {/* Instead of using the toggleTodo function, we use an inbetween function to get the id of the checkbox */}
                 <input type="checkbox" checked={todo.complete} onChange={handleTodoClick}/>
-                {todo.name} - Deadline: {todo.date}
+                {todo.name} - Deadline: {todo.stopDate}
                 
             </label>
         </div>

@@ -32,7 +32,8 @@ function Home() {
 
   // useRef() is a build in function to call inputs fields with the attribute "ref"
   const todoName = useRef();
-  const todoDate = useRef();
+  const todoStartDate = useRef();
+  const todoStopDate = useRef();
 
   useEffect(() => {
     // Can't read strings, need to parse with JSON
@@ -64,7 +65,8 @@ function Home() {
 
   function addToList(e) {
     const name = todoName.current.value
-    const date = todoDate.current.value
+    const startDate = todoStartDate.current.value
+    const stopDate = todoStopDate.current.value
 
     if (name === '') {
         return
@@ -72,7 +74,7 @@ function Home() {
 
     setTodos(previousTodos => {
       // uuidv4 is a id library that generates id's
-        return [ ...previousTodos, {id: uuidv4(), name: name, complete: false, date: date}]
+        return [ ...previousTodos, {id: uuidv4(), name: name, complete: false, startDate: startDate, stopDate: stopDate}]
     })
 
     // Returning the unput box to empty after submit
@@ -93,7 +95,12 @@ function Home() {
       <div className="input-group mb-3">
           <span className="input-group-text" id="inputGroup-sizing-default">Add to list</span>
           <input ref={todoName} type="text" placeholder="New Todo ..."/>
-          <input ref={todoDate} type="date" id="start" name="trip-start"
+          <span className="input-group-text" id="inputGroup-sizing-default">From:</span>
+          <input ref={todoStartDate} type="date" id="start" name="trip-start"
+              min="2021-01-01" max="2070-12-31">
+          </input>
+          <span className="input-group-text" id="inputGroup-sizing-default">To:</span>
+          <input ref={todoStopDate} type="date" id="stop" name="trip-start"
               min="2021-01-01" max="2070-12-31">
           </input>
           
