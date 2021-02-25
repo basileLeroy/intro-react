@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -8,7 +8,7 @@ const localizer = momentLocalizer(moment);
 
 const CalendarPage = () => {
 
-    //TODO: Change the 
+    //TODO: Change the system from localestorage usage to component values between eachother
 
     const [calendarItems, setCalendar] = useState([]);
 
@@ -27,22 +27,22 @@ const CalendarPage = () => {
     const calendarResults = calendarItems.map((calendarItem) => {
 
         return {
-            eventName: calendarItem.name,
-            startDate: calendarItem.startdate,
-            stopDate: calendarItem.stopDate
+            eventName: toString(calendarItem.name),
+            startDate: new Date(calendarItem.startdate),
+            stopDate: new Date(calendarItem.stopDate)
         }
     })
     
     const state = {
         events: [
             {
-                title: calendarResults.eventName,
                 start: calendarResults.startDate,
-                end: calendarResults.stopDate
+                end: calendarResults.stopDate,
+                title: calendarResults.eventName,
             }
         ]
     }
-    console.log(calendarResults)
+    console.log(calendarResults.eventName)
 
     return (
         <div className="App">
