@@ -26,13 +26,19 @@ const CalendarPage = () => {
     // Read map as a foreach!
     const calendarResults = calendarItems.map((calendarItem) => {
 
+        console.log(calendarItem)
         return {
-            eventName: toString(calendarItem.name),
-            startDate: new Date(calendarItem.startdate),
-            stopDate: new Date(calendarItem.stopDate)
+            eventName: calendarItem.name,
+            startDate: new Date(calendarItem.startDate),
+            stopDate: new Date(calendarItem.stopDate),
         }
+        
     })
-    
+    console.log(calendarResults)
+
+    // To obtain the eventName out of calendarResults, I need to select the [array]
+    // TODO: Find a way to be able to correctly select the calendarResults!
+
     const state = {
         events: [
             {
@@ -42,7 +48,7 @@ const CalendarPage = () => {
             }
         ]
     }
-    console.log(calendarResults.eventName)
+
 
     return (
         <div className="App">
