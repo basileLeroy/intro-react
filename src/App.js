@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TodoList from './TodoList';
 import Nav from './Nav';
-import Calendar from './Calendar';
+import CalendarPage from './CalendarPage';
 import { v4 as uuidv4 } from 'uuid';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ function App() {
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/calendar" exact component={Calendar}/>
+            <Route path="/calendar" exact component={CalendarPage}/>
           </Switch>
         </Router>
       </div>
