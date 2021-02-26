@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Todo({ todo, toggleTodo }) {
+const Todo = ({ todo, toggleTodo }) => {
 
 
-    function handleTodoClick() {
+    const handleTodoClick = () => {
         toggleTodo(todo.id)
     }
 
@@ -18,3 +18,5 @@ export default function Todo({ todo, toggleTodo }) {
         </div>
     )
 }
+
+export default Todo;

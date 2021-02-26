@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos';
 
-function App() {
+const App = () => {
 
   return (
     <>
@@ -25,7 +25,7 @@ function App() {
   )
 }
 
-function Home() {
+const Home = () => {
 
   // Destructing the array with all the todos. and replacing them with newTodos created by setTodos
   const [todos, setTodos] = useState([]);
@@ -50,7 +50,7 @@ function Home() {
 
 
   // pass down the function trough the path (from here to todoList to Todo)
-  function toggleTodo(id) {
+  const toggleTodo = (id) => {
 
     // never edit directly in reacht, always make a copy and edit the copy.
     const newTodos = [...todos]
@@ -63,7 +63,7 @@ function Home() {
     setTodos(newTodos)
   }
 
-  function addToList(e) {
+  const addToList = (e) => {
     const name = todoName.current.value
     const startDate = todoStartDate.current.value
     const stopDate = todoStopDate.current.value
@@ -81,7 +81,7 @@ function Home() {
     todoName.current.value = null;
   }
 
-  function handleClearList () {
+  const handleClearList = () => {
     // Making a new list with only the todos that are not marked as complete
     const newTodos = todos.filter(todo => !todo.complete)
 
