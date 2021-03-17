@@ -103,7 +103,7 @@ const Home = () => {
           <input ref={todoStopDate} type="date" id="stop" name="trip-start"
               min="2021-01-01" max="2070-12-31">
           </input>
-          
+
           {/* Adding an eventListner to the button */}
           <button className="btn btn-primary" onClick={addToList}>Add</button>
           <button className="btn btn-warning" onClick={handleClearList}>Clear Completed todo's</button>
