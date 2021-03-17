@@ -8,7 +8,7 @@
 > - Project: `Introduction React`
 > - Tools and languages: `Javascript, React.js, Bootstraps`
 ---
-## Todo-app
+## [Todo-app](https://intro-react-basile.netlify.app/ "A todo app to add to your todo's")
 A simple app where you can add todo's to a list, select a start and end date for that todo,  
 mark them as completed (checked) and remove completed todo's.  
   
