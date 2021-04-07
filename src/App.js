@@ -12,9 +12,10 @@ const App = () => {
 
   return (
     <>
-      <Nav />
+      
       <div className="position-absolute top-50 start-50 translate-middle container-sm p-3 mb-2 bg-info text-dark rounded">
         <Router>
+          <Nav />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/calendar" exact component={CalendarPage}/>
